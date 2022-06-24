@@ -1,7 +1,10 @@
 package studentmanagement.models;
 
+import javax.validation.constraints.NotEmpty;
+
 public class CourseBean {
 	private String courseId;
+	@NotEmpty
 	private String courseName;
 	public String getCourseId() {
 		return courseId;

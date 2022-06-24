@@ -1,3 +1,6 @@
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,11 +31,13 @@
     <div id="sub_content">
         <form:form action="/StudentRegisterationWithSpringMVC/userRegister" method="post" modelAttribute="userBean">
 
-            <h2 class="col-md-6 offset-md-2 mb-5 mt-4">User Registration</h2>
+            <h2 class="col-md-6 offset-md-2 mb-3 mt-4">User Registration</h2>
             <div class="row">
             	<div class="col-md-2"></div>
             	<div class="col-md-6">
 		            <div style="color: red" class="alert alert-danger ${ (error==null)?'d-none' : '' } ">${error}</div>
+         			<div style="color: green" class="alert  alert-success${(success==null)?'d-none' : '' } ">${success}</div>
+         
             	</div>
             </div>
             <div class="row mb-4">
@@ -69,7 +74,10 @@
                 <div class="col-md-2"></div>
                 <label for="confirmPassword"  class="col-md-2 col-form-label">Confirm Password</label>
                 <div class="col-md-4">
-                    <input type="password" class="form-control" id="confirmPassword" name="cfpassword" value="">
+                    <form:input type="password" class="form-control" id="confirmPassword" name="cfpassword" path="userCfPassword"/>
+                </div>
+                <div class="col-md-4">
+                    <div  style="color:red" >${passwordError}</div>
                 </div>
             </div>
             <div class="row mb-4">
@@ -82,7 +90,7 @@
                     </form:select>
                 </div>
             </div>
-            <div class="row mb-4">
+  				<div class="row mb-4">
                 <div class="col-md-4"></div>
     
                 <div class="col-md-6">              
@@ -109,10 +117,11 @@
                 </div>
     
             </div>
+            </div>
             </form:form>
     </div>
 </div>
-</div>
+
         <div id="testfooter">
             <span>Copyright &#169; ACE Inspiration 2022</span>
         </div>

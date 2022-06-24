@@ -3,7 +3,6 @@ package studentmanagement.models;
 import javax.validation.constraints.NotEmpty;
 
 public class UserBean {
-	@NotEmpty
 	private String userId;
 	@NotEmpty
 	private String userEmail;
@@ -11,8 +10,8 @@ public class UserBean {
 	private String userName;
 	@NotEmpty
 	private String userPassword;
-	//@NotEmpty
 	private String userRole;
+	private String userCfPassword;
 	public UserBean() {
 		
 	}
@@ -54,5 +53,11 @@ public class UserBean {
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public String getUserCfPassword() {
+		return userCfPassword;
+	}
+	public void setUserCfPassword(String userCfPassword) {
+		this.userCfPassword = userCfPassword;
 	}
 }

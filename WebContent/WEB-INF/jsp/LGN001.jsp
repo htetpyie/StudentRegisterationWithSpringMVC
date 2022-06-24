@@ -19,11 +19,11 @@
             <p>${error}</p>
           </div>
         </div>
-        <form class="login-form" action="UserLoginServlet" method="post" name="confirm">
+        <form class="login-form" action="/StudentRegisterationWithSpringMVC/Login" method="post" name="confirm">
           <input type="text" name="id" placeholder="User ID" value="" autofocus />
           <input type="password" name="password" value="" placeholder="Password" />
           <button>login</button>
-          <p class="message">Not registered? <a href="USR001.jsp">Create an account</a></p>
+          <p class="message">Not registered? <a href="/StudentRegisterationWithSpringMVC/displayUserRegister">Create an account</a></p>
         </form>
       </div>
     </div>

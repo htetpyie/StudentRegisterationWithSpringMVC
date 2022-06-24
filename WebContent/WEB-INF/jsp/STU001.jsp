@@ -2,6 +2,7 @@
 <html lang="en">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <head>
         <meta charset="UTF-8">
@@ -25,17 +26,9 @@
     <jsp:include page="header.jsp"></jsp:include>
       <div class="main_contents">
     <div id="sub_content">
-        <form action = "StudentRegisterServlet" method="post">
+        <form:form action = "StudentRegisterServlet" method="post" modelAttribute="studentBean">
 
-            <h2 class="col-md-6 offset-md-2 mb-5 mt-4">Student Registration</h2>
-            <!-- <div class="row mb-4">
-                <div class="col-md-2"></div>
-                <label for="studentID" class="col-md-2 col-form-label">Student ID</label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" value="STU001" id="studentID" disabled>
-                </div>
-            </div> -->
-            
+            <h2 class="col-md-6 offset-md-2 mb-5 mt-4">Student Registration</h2>            
             <div class="row mb-4 ${success.isBlank()? 'd-none': '' }${error.isBlank()? 'd-none' : '' }">
             <div class="col-md-2"></div>	
             <label for="id" class="col-md-2 col-form-label"></label>            
@@ -48,14 +41,14 @@
                 <div class="col-md-2"></div>
                 <label for="name" class="col-md-2 col-form-label">Name</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="name" name="name" value="${data.studentName}">
+                    <form:input type="text" class="form-control" id="name" path="studentName" />
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-md-2"></div>
                 <label for="dob" class="col-md-2 col-form-label">DOB</label>
                 <div class="col-md-4">
-                    <input type="date" class="form-control" value="${data.studentDob }" name="dob" id="dob">
+                    <form:input type="date" class="form-control"  path="studentDob" id="dob"/>
                 </div>
             </div>
             <fieldset class="row mb-4">
@@ -63,15 +56,13 @@
                 <legend class="col-form-label col-md-2 pt-0">Gender</legend>
                 <div class="col-md-4">
                     <div class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="Male"
-                            ${(data.studentGender).equals('Male') ?'checked' : '' } checked>
+                        <form:input class="form-check-input" type="radio" path="studentGender" id="gridRadios1" value="Male" checked/>
                         <label class="form-check-label" for="gridRadios1">
                             Male
                         </label>
                     </div>
                     <div class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="Female"
-                         ${(data.studentGender).equals('Female') ?'checked' : '' }>
+                        <form:input class="form-check-input" type="radio" path="studentGender" id="gridRadios2" value="Female"/>
                         <label class="form-check-label" for="gridRadios2">
                             Female
                         </label>
@@ -84,7 +75,7 @@
                 <div class="col-md-2"></div>
                 <label for="phone" class="col-md-2 col-form-label">Phone</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="phone" name="phone" value="${data.studentPhone}">
+                    <form:input type="text" class="form-control" id="phone" path="studentPhone" />
                 </div>
             </div>
             <div class="row mb-4">
@@ -167,7 +158,7 @@
                 </div>    
             </div>     
            
-            </form>
+            </form:form>
     </div>
 </div>
         <div id="testfooter">

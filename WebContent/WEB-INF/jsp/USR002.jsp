@@ -1,5 +1,8 @@
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page isELIgnored="false" %>
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,13 +27,13 @@
     <jsp:include page="header.jsp"></jsp:include>
       <div class="main_contents">
     <div id="sub_content">
-        <form action="UserUpdateServlet" method="post">
+        <form action="/StudentRegisterationWithSpringMVC/userUpdate" method="post">
 
         <h2 class="col-md-6 offset-md-2 mb-5 mt-4">User Update</h2>
         <div class="row">
             	<div class="col-md-2"></div>
             	<div class="col-md-6">
-		            <div style="color: red" class="alert alert-danger ${ (error==null)?'d-none' : '' } ">${error}</div>
+		            <div style="color: red" class="alert alert-danger ${(error==null)?'d-none' : '' } ">${error}</div>
             	</div>
             </div>
             <div class="row mb-4 d-none">
@@ -39,7 +42,6 @@
                 <div class="col-md-4">
                     <input type="text" class="form-control" id="name" name="id" value="${user.userId}">
                 </div>
-                ${user.userId}
             </div>
             <div class="row mb-4">
                 <div class="col-md-2"></div>
@@ -79,7 +81,7 @@
                     </select>
                 </div>
             </div>
-        <div class="row mb-4">
+            <div class="row mb-4">
             <div class="col-md-4"></div>
 
             <div class="col-md-6">              
@@ -105,16 +107,17 @@
                         </div>
                     </div>
             </div>
-     <button type="button" class="btn btn-secondary col-md-2 " onclick="location.href = 'UserDisplayServlet'">
+     <button type="button" class="btn btn-secondary col-md-2 " onclick="location.href = '/StudentRegisterationWithSpringMVC/showUser'">
                 Back
             </button>
     
 
         </div>
+        </div>
         </form>
     </div>
 </div>
-</div>
+
         <div id="testfooter">
             <span>Copyright &#169; ACE Inspiration 2022</span>
         </div>

@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <html lang="en">
 
 <head>
@@ -24,7 +28,7 @@
     <jsp:include page="header.jsp"></jsp:include>
       <div class="main_contents">
     <div id="sub_content">
-    <form action="CourseRegisterServlet" method="post">
+    <form:form action="/StudentRegisterationWithSpringMVC/courseRegister" method="post" modelAttribute="courseBean">
         <h2 class="col-md-6 offset-md-2 mb-5 mt-4">Course Registration</h2>        
         <div class="row mb-4 ${success.isBlank()? 'd-none': '' }${error.isBlank()? 'd-none' : '' }">
             <div class="col-md-2"></div>	
@@ -35,19 +39,14 @@
 	          </div>
         </div>
         
-        <!-- <div class="row mb-4">
-            <div class="col-md-2"></div>
-            <label for="id" class="col-md-2 col-form-label"> ID</label>
-            <div class="col-md-4 " hidden="hidden">
-                <input type="email" class="form-control" id="id">
-            </div>
-        </div> -->
-
         <div class="row mb-4">
             <div class="col-md-2"></div>
             <label for="name" class="col-md-2 col-form-label">Name</label>
             <div class="col-md-4">
-                <input type="name" class="form-control" id="name" autofocus name="courseName" placeholder="Course Name">
+                <form:input type="text" class="form-control" id="name" autofocus="autofocus" path="courseName" placeholder="Course Name"/>
+            </div>
+            <div class="col-md-4">
+                <form:errors style="color:red" path="courseName"/>
             </div>
         </div>
       
@@ -78,7 +77,7 @@
             </div>
 
         </div>
-        </form>
+        </form:form>
     </div>
 </div>
 </div>

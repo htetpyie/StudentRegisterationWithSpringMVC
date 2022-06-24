@@ -6,10 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Service;
+
 import studentmanagement.persistant.dto.UserDTO;
 import studentmanagement.persistant.dto.UserResponseDTO;
 
-
+@Service("UserDAO")
 public class UserDAO {
 	public static Connection con = null;
 	static {

@@ -22,31 +22,30 @@
         <div class="container">
             <div class=row>        
                 <div class="col-md-5 ">
-            <a href="MNU001.jsp"><h3>Student Registration</h3></a>
+            <a href="/StudentRegisterationWithSpringMVC/showMenu"><h3>Student Registration</h3></a>
         </div>  
         <div class="col-md-6">
             <p>User: ${sessionScope.user.userId} ${sessionScope.user.userName}</p>
             <p>Current Date : ${sessionScope.date} </p>
         </div>  
         <div class="col-md-1" >
-            <input type="button" class="btn-basic" id="lgnout-button" value="${sessionScope.user==null? 'Login': 'Log Out' }" onclick="location.href='UserLogoutServlet'">
+            <input type="button" class="btn-basic" id="lgnout-button" value="${sessionScope.user==null? 'Login': 'Log Out' }" onclick="location.href='/StudentRegisterationWithSpringMVC/Logout'">
         </div>        
     </div>
 </div>
 
 </div>
-    <!-- <div id="testsidebar">Hello World </div> -->
     <div class="container">
     <div class="sidenav">
         
         <button class="dropdown-btn" > Class Management <i class="fa fa-caret-down"></i></button>
         
             <div class="dropdown-container">
-          <a href="BUD003.jsp">Course Registration </a>
-          <a href="ShowCoursesServlet">Student Registration </a>
+          <a href="/StudentRegisterationWithSpringMVC/showCourseRegister">Course Registration </a>
+          <a href="/StudentRegisterationWithSpringMVC/showStudentRegister">Student Registration </a>
           <a href="ShowStudentServlet">Student Search </a>
         </div>
-        <a href="UserDisplayServlet">Users Management</a>
+        <a href="/StudentRegisterationWithSpringMVC/showUser">Users Management</a>
       </div>
 </body>
 </html>

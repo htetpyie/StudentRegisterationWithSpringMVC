@@ -3,6 +3,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,51 +26,65 @@
     <jsp:include page="header.jsp"></jsp:include>
       <div class="main_contents">
     <div id="sub_content">
-        <form action="UserAddServlet" method="post">
+        <form:form action="/StudentRegisterationWithSpringMVC/userAdd" method="post" modelAttribute="userBean">
 
-            <h2 class="col-md-6 offset-md-2 mb-5 mt-4">User Registration</h2>
+            <h2 class="col-md-6 offset-md-2 mb-3 mt-4">Add User</h2>
             <div class="row">
             	<div class="col-md-2"></div>
             	<div class="col-md-6">
 		            <div style="color: red" class="alert alert-danger ${ (error==null)?'d-none' : '' } ">${error}</div>
+         			<div style="color: green" class="alert  alert-success${(success==null)?'d-none' : '' } ">${success}</div>
+         
             	</div>
             </div>
             <div class="row mb-4">
                 <div class="col-md-2"></div>
                 <label for="name" class="col-md-2 col-form-label">Name</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="name" name="name" value="${sessionScope.user_data.userName }">
+                    <form:input type="text" class="form-control" id="name" path="userName"/>
+                </div>
+                <div class="col-md-4">
+                    <form:errors  style="color:red"  path="userName"/>
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-md-2"></div>
-                <label for="email" class="col-md-2 col-form-label">Email</label>
+                <form:label for="email" path="userEmail" class="col-md-2 col-form-label">Email</form:label>
                 <div class="col-md-4">
-                    <input type="email" class="form-control" id="email" name="email" value="${sessionScope.user_data.userEmail}">
+                    <form:input type="email" class="form-control" id="email" name="email" path="userEmail"/>
+                </div>
+                <div class="col-md-4">
+                    <form:errors  style="color:red"  path="userEmail"/>
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-md-2"></div>
-                <label for="Passowrd" class="col-md-2 col-form-label">Password</label>
+                <form:label for="Passowrd" class="col-md-2 col-form-label" path="userPassword">Password</form:label>
                 <div class="col-md-4">
-                    <input type="password" class="form-control" id="name" name="password" value="${sessionScope.user_data.userPassword}">
+                    <form:input type="password" class="form-control" id="name" name="password" path="userPassword" />
+                </div>
+                <div class="col-md-4">
+                    <form:errors  style="color:red"  path="userPassword"/>
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-md-2"></div>
-                <label for="confirmPassword" class="col-md-2 col-form-label">Confirm Password</label>
+                <label for="confirmPassword"  class="col-md-2 col-form-label">Confirm Password</label>
                 <div class="col-md-4">
-                    <input type="password" class="form-control" id="confirmPassword" name="cfpassword" value="">
+                    <form:input type="password" class="form-control" id="confirmPassword" name="cfpassword" path="userCfPassword"/>
+                </div>
+                <div class="col-md-4">
+                    <div  style="color:red" >${passwordError}</div>
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-md-2"></div>
                 <label for="userRole" class="col-md-2 col-form-label">User Role</label>
                 <div class="col-md-4">
-                    <select class="form-select" aria-label="Education" name="role" id="userRole">
-                        <option value="1" ${sessionScope.user_data.userRole.equals('1') ? 'selected' : ''} >Admin</option>
-                        <option value="0" ${sessionScope.user_data.userRole.equals('0') ? 'selected' : ''}>User</option>       
-                    </select>
+                    <form:select class="form-select" path="userRole" aria-label="Education" name="role" id="userRole">
+                        <form:option value="1" >Admin</form:option>
+                        <form:option value="0">User</form:option>       
+                    </form:select>
                 </div>
             </div>
             <div class="row mb-4">
@@ -99,7 +114,7 @@
                 </div>
     
             </div>
-            </form>
+            </form:form>
     </div>
 </div>
 </div>
