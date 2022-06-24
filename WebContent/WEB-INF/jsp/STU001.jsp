@@ -56,16 +56,11 @@
                 <legend class="col-form-label col-md-2 pt-0">Gender</legend>
                 <div class="col-md-4">
                     <div class="form-check-inline">
-                        <form:input class="form-check-input" type="radio" path="studentGender" id="gridRadios1" value="Male" checked/>
-                        <label class="form-check-label" for="gridRadios1">
-                            Male
-                        </label>
+                        <form:radiobutton class="form-check-input" path="studentGender"  value="Male" label="Male"/>                       
                     </div>
                     <div class="form-check-inline">
-                        <form:input class="form-check-input" type="radio" path="studentGender" id="gridRadios2" value="Female"/>
-                        <label class="form-check-label" for="gridRadios2">
-                            Female
-                        </label>
+                        <form:radiobutton class="form-check-input"  path="studentGender"  value="Female" label="Female"/>
+                      
                     </div>
     
                 </div>
@@ -82,39 +77,23 @@
                 <div class="col-md-2"></div>
                 <label for="education" class="col-md-2 col-form-label">Education</label>
                 <div class="col-md-4">
-                    <select class="form-select" aria-label="Education" name="education" id="education">
-                        <option value="0" ${(data.studentEducation).equals('0')? 'selected' : ''}>Bachelor of Information Technology</option>
-                        <option value="1"  ${(data.studentEducation).equals('1')? 'selected' : ''}>Diploma in IT</option>
-                        <option value="2"  ${(data.studentEducation).equals('2')? 'selected' : ''}>Bachelor of Computer Science</option>
+                    <form:select class="form-select" aria-label="Education" path="studentEducation" id="education">
+                        <form:option value="0" >Bachelor of Information Technology</form:option>
+                        <form:option value="1" >Diploma in IT</form:option>
+                        <form:option value="2" >Bachelor of Computer Science</form:option>
     
-                    </select>
+                    </form:select>
                 </div>
             </div>
             <fieldset class="row mb-4">
                 <div class="col-md-2"></div>
-                <legend class="col-form-label col-md-2 pt-0">Attend</legend>
-                
-             
-                <% int c= 0; %>
-                <div class='col-md-4'>
-                <c:forEach items="${courseList}" var="course" >   
-                ${ c%3 == 0?"<div class='row'>":''}            		
-		                	<div class="form-check-inline col-md-4">
-		                        <input class="form-check-input" type="checkbox" name="course" id="gridRadios1" value="${course.courseId}">
-		                        <label class="form-check-label" for="gridRadios1">
-		                           ${course.courseName }
-		                        </label>
-		                    </div> 
-		                              
-              ${ c%3 == 0?"</div>":''}  
-              <% c++; %>
-                </c:forEach>
-               </div>
-                
-    
+                <legend class="col-form-label col-md-2 pt-0">Attend</legend>          
+              
+                <div class='col-md-4 me-2'>
+                <form:checkboxes items="${courseList}" style="margin-left:20px;" class="form-check-input" path="studentCourse"/>
+               </div>                 
 
     
-
                 
             </fieldset>
             <div class="row mb-4">

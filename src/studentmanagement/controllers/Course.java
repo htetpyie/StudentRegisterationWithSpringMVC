@@ -1,5 +1,8 @@
 package studentmanagement.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,6 +17,7 @@ import studentmanagement.helpers.CourseHelper;
 import studentmanagement.models.CourseBean;
 import studentmanagement.persistant.dao.CourseDAO;
 import studentmanagement.persistant.dto.CourseDTO;
+import studentmanagement.persistant.dto.CourseResponseDTO;
 
 @Controller
 public class Course {

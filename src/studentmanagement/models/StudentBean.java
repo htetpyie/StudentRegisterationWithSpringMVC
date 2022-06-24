@@ -1,12 +1,20 @@
 package studentmanagement.models;
 
+import javax.validation.constraints.NotEmpty;
+
 public class StudentBean {
 	private String studentId;
+	@NotEmpty
 	private String studentName;
+	@NotEmpty
 	private String studentDob;
+	@NotEmpty
 	private String studentGender;
+	@NotEmpty
 	private	String studentPhone;
+	@NotEmpty
 	private String studentEducation;
+	@NotEmpty
 	private String studentCourse;
 	private String studentPhoto;
 	
