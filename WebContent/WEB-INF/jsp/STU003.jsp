@@ -25,7 +25,7 @@
   
     <div class="main_contents">
     <div id="sub_content">
-      <form class="row g-3 mt-3 ms-2" action="StudentSearchServlet" method="get">
+      <form class="row g-3 mt-3 ms-2" action="/StudentManagementWithSpringMVC/searchStudent" method="get">
         <div class="col-auto">
           <label for="staticEmail2" class="visually-hidden">studentID</label>
           <input type="text"  class="form-control" id="staticEmail2" name="id" placeholder="Student ID">
@@ -66,7 +66,7 @@
 	          		<td>${student.studentName }</td>
 	           		<td>${map.get(student.studentId)}</td>
 	          		<td>
-	          			<a href="StudentDetailServlet?id=${student.studentId}"><button type="submit" class="btn btn-secondary mb-2">See More</button></a> 
+	          			<a href="/StudentManagementWithSpringMVC/seeMore/${student.studentId}"><button type="submit" class="btn btn-secondary mb-2">See More</button></a> 
 	          		</td>
 	          		
 	          	</tr>          

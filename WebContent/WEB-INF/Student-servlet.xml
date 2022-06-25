@@ -28,6 +28,7 @@
 	</bean>
 	<bean id="UserDAO" class="studentmanagement.persistant.dao.UserDAO"></bean>
 	<bean id="CourseDAO" class="studentmanagement.persistant.dao.CourseDAO"></bean>
+	<bean id="StudentCourseDAO" class="studentmanagement.persistant.dao.StudentCourseDAO"></bean>
 	
 	 <mvc:resources mapping="/resources/**" location="/resources/" cache-period="31556926"/>
 </beans>

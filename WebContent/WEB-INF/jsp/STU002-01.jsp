@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,37 +26,34 @@
     <jsp:include page="header.jsp"></jsp:include>
       <div class="main_contents">
     <div id="sub_content">
-        <form action="StudentUpdateServlet" method="post">
-	
-            <h2 class="col-md-6 offset-md-2 mb-5 mt-4">Student Registration</h2>
-            <div class="row mb-4 ${success.isBlank()? 'd-none': '' }${error.isBlank()? 'd-none' : '' }">
-            <div class="col-md-2"></div>	
-            <label for="id" class="col-md-2 col-form-label"></label>            
-	            <div class="col-md-4">
-	            	<div class="" style="color: red">${error}</div>
-	            	<div class="" style="color:green" >${success }</div>                
-	          </div>
-        	</div>
-        	
-        	 <div class="row mb-4 d-none">
+           <form:form action="/StudentManagementWithSpringMVC/updateStudent" method="post" modelAttribute="studentBean">
+
+            <h2 class="col-md-6 offset-md-2 mb-5 mt-4">Student Details</h2>
+            <div class="row mb-4">
                 <div class="col-md-2"></div>
                 <label for="studentID" class="col-md-2 col-form-label">Student ID</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" value="${student.studentId }" name="id" id="studentID">
+                    <form:input type="text" class="form-control" path="studentId"  readonly="true"/>
                 </div>
-            </div>       	
-             <div class="row mb-4">
+            </div>
+            <div class="row mb-4">
                 <div class="col-md-2"></div>
                 <label for="name" class="col-md-2 col-form-label">Name</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="name" name="name" value="${student.studentName}">
+                    <form:input type="text" class="form-control" path="studentName"/>
+                </div>
+                <div class="col-md-4">
+                    <form:errors  style="color:red" type="text"  path="studentName" />
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-md-2"></div>
                 <label for="dob" class="col-md-2 col-form-label">DOB</label>
                 <div class="col-md-4">
-                    <input type="date" class="form-control" value="${student.studentDob }" name="dob" id="dob">
+                    <form:input type="date" class="form-control" path="studentDob" />
+                </div>
+                <div class="col-md-4">
+                    <form:errors  style="color:red" type="text"  path="studentDob" />
                 </div>
             </div>
             <fieldset class="row mb-4">
@@ -63,20 +61,14 @@
                 <legend class="col-form-label col-md-2 pt-0">Gender</legend>
                 <div class="col-md-4">
                     <div class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="Male"
-                            ${(student.studentGender).equals('Male') ?'checked' : '' }>
-                        <label class="form-check-label" for="gridRadios1">
-                            Male
-                        </label>
+                        <form:radiobutton class="form-check-input" path="studentGender"  value="Male" label="Male"/>                       
                     </div>
                     <div class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="Female"
-                         ${(student.studentGender).equals('Female') ?'checked' : '' }>
-                        <label class="form-check-label" for="gridRadios2">
-                            Female
-                        </label>
-                    </div>
-    
+                        <form:radiobutton class="form-check-input"  path="studentGender"  value="Female" label="Female" />                  
+                    </div>    
+                </div>
+                <div class="col-md-4">
+                    <form:errors  style="color:red"  path="studentGender" />
                 </div>
             </fieldset>
     
@@ -84,52 +76,44 @@
                 <div class="col-md-2"></div>
                 <label for="phone" class="col-md-2 col-form-label">Phone</label>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="phone" name="phone" value="${student.studentPhone}">
+                    <form:input class="form-control" path="studentPhone" />
+                </div>
+                <div class="col-md-4">
+                    <form:errors  style="color:red" path="studentPhone" />
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-md-2"></div>
                 <label for="education" class="col-md-2 col-form-label">Education</label>
                 <div class="col-md-4">
-                    <select class="form-select" aria-label="Education" name="education" id="education">
-                        <option value="0" ${(student.studentEducation).equals('0')? 'selected' : ''}>Bachelor of Information Technology</option>
-                        <option value="1"  ${(student.studentEducation).equals('1')? 'selected' : ''}>Diploma in IT</option>
-                        <option value="2"  ${(student.studentEducation).equals('2')? 'selected' : ''}>Bachelor of Computer Science</option>
-    
-                    </select>
+                    <form:select class="form-select" aria-label="Education" path="studentEducation"  id="education">
+                        <form:option value="0" >Bachelor of Information Technology</form:option>
+                        <form:option value="1" >Diploma in IT</form:option>
+                        <form:option value="2" >Bachelor of Computer Science</form:option>    
+                    </form:select>
+                </div>
+                 <div class="col-md-4">
+                    <form:errors  style="color:red"  path="studentEducation" />
                 </div>
             </div>
             <fieldset class="row mb-4">
                 <div class="col-md-2"></div>
-                <legend class="col-form-label col-md-2 pt-0">Attend</legend>
-                
-             
-                <% int c= 0; %>
-                <div class='col-md-4'>
-                <c:forEach items="${courseList}" var="course" >   
-                ${ c%3 == 0?"<div class='row'>":''}            		
-		                	<div class="form-check-inline col-md-4">
-		                        <input class="form-check-input" type="checkbox" name="course" id="gridRadios1"
-		                        ${selectedCourseIdList.contains(course.courseId)?'checked':'' } value="${course.courseId}">
-		                        <label class="form-check-label" for="gridRadios1">
-		                           ${course.courseName }
-		                        </label>
-		                    </div> 
-		                              
-              ${ c%3 == 0?"</div>":''}  
-              <% c++; %>
-                </c:forEach>
-               </div>               
-    
-
-    
+                <legend class="col-form-label col-md-2 pt-0">Attend</legend>          
+    		
+               <div class='col-md-4'>
+                <form:checkboxes items="${courseList}" style="margin-left:20px;" class="form-check-input" path="studentCourse" />
+               </div> 
+               <div class="col-md-4">
+                    <form:errors  style="color:red" path="studentCourse" />
+               </div>  
                 
             </fieldset>
+    
             <div class="row mb-4">
                 <div class="col-md-2"></div>
                 <label for="name" class="col-md-2 col-form-label">Photo</label>
                 <div class="col-md-4">
-                    <input type="file" class="form-control" id="name">
+                    <form:input type="file" class="form-control" path="studentPhoto"/>
                 </div>
             </div>
     
@@ -161,7 +145,7 @@
                     </div>
             </div>
     
-            <button type="button" class="btn btn-danger  " onclick="location.href = 'ShowStudentServlet';">
+            <button type="button" class="btn btn-danger  " onclick="location.href = '/StudentManagementWithSpringMVC/showStudentAll';">
                 Cancel
             </button>
     
@@ -172,7 +156,7 @@
     
             <!--Modal-->
     
-            </form>
+            </form:form>
     </div>
 </div>
 </div>

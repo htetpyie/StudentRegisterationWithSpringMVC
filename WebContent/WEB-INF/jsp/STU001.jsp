@@ -26,22 +26,18 @@
     <jsp:include page="header.jsp"></jsp:include>
       <div class="main_contents">
     <div id="sub_content">
-        <form:form action = "StudentRegisterServlet" method="post" modelAttribute="studentBean">
+        <form:form action = "/StudentManagementWithSpringMVC/studentRegister" method="post" modelAttribute="studentBean">
 
             <h2 class="col-md-6 offset-md-2 mb-5 mt-4">Student Registration</h2>            
-            <div class="row mb-4 ${success.isBlank()? 'd-none': '' }${error.isBlank()? 'd-none' : '' }">
-            <div class="col-md-2"></div>	
-            <label for="id" class="col-md-2 col-form-label"></label>            
-	            <div class="col-md-4">
-	            	<div class="" style="color: red">${error}</div>
-	            	<div class="" style="color:green" >${success }</div>                
-	          </div>
-        	</div>
+
             <div class="row mb-4">
                 <div class="col-md-2"></div>
                 <label for="name" class="col-md-2 col-form-label">Name</label>
                 <div class="col-md-4">
                     <form:input type="text" class="form-control" id="name" path="studentName" />
+                </div>
+                  <div class="col-md-4">
+                    <form:errors  style="color:red" type="text"  path="studentName" />
                 </div>
             </div>
             <div class="row mb-4">
@@ -49,6 +45,9 @@
                 <label for="dob" class="col-md-2 col-form-label">DOB</label>
                 <div class="col-md-4">
                     <form:input type="date" class="form-control"  path="studentDob" id="dob"/>
+                </div>
+                <div class="col-md-4">
+                    <form:errors  style="color:red"   path="studentDob" />
                 </div>
             </div>
             <fieldset class="row mb-4">
@@ -59,10 +58,11 @@
                         <form:radiobutton class="form-check-input" path="studentGender"  value="Male" label="Male"/>                       
                     </div>
                     <div class="form-check-inline">
-                        <form:radiobutton class="form-check-input"  path="studentGender"  value="Female" label="Female"/>
-                      
-                    </div>
-    
+                        <form:radiobutton class="form-check-input"  path="studentGender"  value="Female" label="Female"/>                  
+                    </div>    
+                </div>
+                <div class="col-md-4">
+                    <form:errors  style="color:red"  path="studentGender" />
                 </div>
             </fieldset>
     
@@ -72,6 +72,9 @@
                 <div class="col-md-4">
                     <form:input type="text" class="form-control" id="phone" path="studentPhone" />
                 </div>
+                <div class="col-md-4">
+                    <form:errors  style="color:red" path="studentPhone" />
+                </div>
             </div>
             <div class="row mb-4">
                 <div class="col-md-2"></div>
@@ -80,21 +83,24 @@
                     <form:select class="form-select" aria-label="Education" path="studentEducation" id="education">
                         <form:option value="0" >Bachelor of Information Technology</form:option>
                         <form:option value="1" >Diploma in IT</form:option>
-                        <form:option value="2" >Bachelor of Computer Science</form:option>
-    
+                        <form:option value="2" >Bachelor of Computer Science</form:option>    
                     </form:select>
+                </div>
+                <div class="col-md-4">
+                    <form:errors  style="color:red"  path="studentEducation" />
                 </div>
             </div>
             <fieldset class="row mb-4">
                 <div class="col-md-2"></div>
                 <legend class="col-form-label col-md-2 pt-0">Attend</legend>          
               
-                <div class='col-md-4 me-2'>
+                <div class='col-md-4'>
                 <form:checkboxes items="${courseList}" style="margin-left:20px;" class="form-check-input" path="studentCourse"/>
-               </div>                 
+               </div> 
+               <div class="col-md-4">
+                    <form:errors  style="color:red" path="studentCourse" />
+               </div>           
 
-    
-                
             </fieldset>
             <div class="row mb-4">
                 <div class="col-md-2"></div>
@@ -108,8 +114,7 @@
                 <div class="col-md-4"></div>
     
                 <div class="col-md-4">
-                    <button type="reset" class="btn btn-danger ">
-    
+                    <button type="button" class="btn btn-danger" onclick="location.href='/StudentManagementWithSpringMVC/showStudentRegister'">    
                         Reset
                     </button>
                     <button type="submit" class="btn btn-secondary col-md-2" data-bs-toggle="modal" data-bs-target="#exampleModa">

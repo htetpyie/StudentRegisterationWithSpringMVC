@@ -1,7 +1,7 @@
 package studentmanagement.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ import studentmanagement.helpers.CourseHelper;
 import studentmanagement.models.CourseBean;
 import studentmanagement.persistant.dao.CourseDAO;
 import studentmanagement.persistant.dto.CourseDTO;
-import studentmanagement.persistant.dto.CourseResponseDTO;
+
 
 @Controller
 public class Course {
@@ -25,9 +25,14 @@ public class Course {
 	private CourseDAO courseDAO;	
 	
 	@GetMapping("/showCourseRegister")
-	public ModelAndView showCourseRegister() {	
-		CourseBean bean = new CourseBean();
-		return new ModelAndView("BUD003","courseBean",bean);
+	public ModelAndView showCourseRegister(HttpSession session) {
+		if(session.getAttribute("user") == null) {
+			return new ModelAndView("redirect:/");			
+		}else {
+			CourseBean bean = new CourseBean();
+			return new ModelAndView("BUD003","courseBean",bean);
+			
+		}
 		
 	}
 	

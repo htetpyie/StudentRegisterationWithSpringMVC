@@ -29,7 +29,7 @@
     <jsp:include page="header.jsp"></jsp:include>
       <div class="main_contents">
     <div id="sub_content">
-        <form:form action="/StudentRegisterationWithSpringMVC/userRegister" method="post" modelAttribute="userBean">
+        <form:form action="/StudentManagementWithSpringMVC/userRegister" method="post" modelAttribute="userBean">
 
             <h2 class="col-md-6 offset-md-2 mb-3 mt-4">User Registration</h2>
             <div class="row">

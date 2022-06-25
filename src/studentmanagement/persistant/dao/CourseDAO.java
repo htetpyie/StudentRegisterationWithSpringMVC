@@ -40,6 +40,25 @@ public class CourseDAO {
 		return result;
 	}
 	
+	public String selectCourseIdByCourseName(String name) {
+		String sql = "SELECT id FROM course_table where name=? ";
+		String course="";
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, name);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				course = rs.getString(1);
+			}
+				
+		} catch (SQLException e) {
+			System.out.println("Selection course Id error!");
+		}
+		return course;
+		
+	}
+	
 	public CourseResponseDTO selectCourse(CourseDTO dto) {	
 		CourseResponseDTO courseRes = new CourseResponseDTO();
 		String sql = "select * from course_table where id=?";		
@@ -60,7 +79,7 @@ public class CourseDAO {
 	}
 	
 	public ArrayList<CourseResponseDTO> selectCourseAll() {	
-		ArrayList<CourseResponseDTO> list = new ArrayList();
+		ArrayList<CourseResponseDTO> list = new ArrayList<>();
 		String sql = "select * from course_table ";		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);		

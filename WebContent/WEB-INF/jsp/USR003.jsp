@@ -24,7 +24,7 @@
     <jsp:include page="header.jsp"></jsp:include>
       <div class="main_contents">
     <div id="sub_content">
-        <form class="row g-3 mt-3 ms-2" action="/StudentRegisterationWithSpringMVC/userSearch" method="get">
+        <form class="row g-3 mt-3 ms-2" action="/StudentManagementWithSpringMVC/userSearch" method="get">
             <div class="col-auto">
                 <label for="staticEmail2" class="visually-hidden">User Id</label>
                 <input type="text" class="form-control" id="staticEmail2" name="id" placeholder="User ID">
@@ -38,7 +38,7 @@
                 <button type="submit" class="btn btn-primary mb-3">Search</button>
             </div>
             <div class="col-auto">
-                <button type="button" class="btn btn-secondary " onclick="location.href = '/StudentRegisterationWithSpringMVC/showAddUser';">
+                <button type="button" class="btn btn-secondary " onclick="location.href = '/StudentManagementWithSpringMVC/showAddUser';">
                     Add
                 </button>
     
@@ -63,13 +63,13 @@
 		                    <td>${user.userId}</td>
 		                    <td>${user.userName}</td>                    
 		                <td>
-		                    <button type="button" class="btn btn-success  " onclick="location.href = '/StudentRegisterationWithSpringMVC/showUserUpdate/${user.userId}';">
+		                    <button type="button" class="btn btn-success  " onclick="location.href = '/StudentManagementWithSpringMVC/showUserUpdate/${user.userId}';">
 		                        Update
 		                    </button>
 		                </td>
 		                <td><button type="button" class="btn btn-secondary mb-3" ${user.userId.equals(sessionScope.user.userId)?'disabled':'' }
 		                ${sessionScope.user.userRole.equals("1")?'':'disabled' }
-		                data-bs-toggle="modal"  onclick="location.href = '/StudentRegisterationWithSpringMVC/userDelete/${user.userId}';"
+		                data-bs-toggle="modal"  onclick="location.href = '/StudentManagementWithSpringMVC/userDelete/${user.userId}';"
 		                    data-bs-target="#exampleModa">Delete</button></td>    
 		                </tr>                 	                
                 	</c:if>

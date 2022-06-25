@@ -6,9 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Service;
+
 import studentmanagement.persistant.dto.StudentResponseDTO;
 
-
+@Service("StudentCourseDAO")
 public class StudentCourseDAO {
 
 	public static Connection con = null;
@@ -75,6 +77,23 @@ public class StudentCourseDAO {
 		return courses;
 	}
 	
+	public ArrayList<String> selectCourseListByStudentId(String id) {
+		ArrayList<String> course= new ArrayList<String>();
+		String sql = "select course_table.name from course_table join student_course on course_table.id = student_course.course_id  "
+				+ "where student_course.student_id = ? ";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				course.add(rs.getString(1));
+			}
+		} catch (SQLException e) {
+			System.out.println("course list selection error");
+		}
+		return course;
+	}
+	
 	public int deleteCourseListByStudentId(String id) {
 		int result = 0;
 		String query = "delete from student_course where student_id = ?";
@@ -91,13 +110,12 @@ public class StudentCourseDAO {
 	}
 	
 	public ArrayList<StudentResponseDTO> searchByIdNameCourse(String id, String name, String course){
-		ArrayList<StudentResponseDTO> list = new ArrayList();
+		ArrayList<StudentResponseDTO> list = new ArrayList<>();
 		String sql = "select distinct student_table.id, student_table.name, student_table.dob,"
 				+ "student_table.gender, student_table.phone, student_table.education, student_table.photo"
 				+ " from student_table join student_course on student_table.id = student_course.student_id "
 				+ "join course_table on student_course.course_id = course_table.id"
-				+ " where student_table.id = ? or student_table.name = ? or course_table.name = ? ";
-		
+				+ " where student_table.id = ? or student_table.name = ? or course_table.name = ? ";		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, id);
@@ -117,7 +135,6 @@ public class StudentCourseDAO {
 				
 				list.add(studentRes);
 			}
-			System.out.println("Selection done." + list);
 		} catch (SQLException e) {
 			System.out.println(" search selection error...");
 		}

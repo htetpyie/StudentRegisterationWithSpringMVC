@@ -27,7 +27,7 @@
     <jsp:include page="header.jsp"></jsp:include>
       <div class="main_contents">
     <div id="sub_content">
-        <form action="/StudentRegisterationWithSpringMVC/userUpdate" method="post">
+        <form action="/StudentManagementWithSpringMVC/userUpdate" method="post">
 
         <h2 class="col-md-6 offset-md-2 mb-5 mt-4">User Update</h2>
         <div class="row">
@@ -107,7 +107,7 @@
                         </div>
                     </div>
             </div>
-     <button type="button" class="btn btn-secondary col-md-2 " onclick="location.href = '/StudentRegisterationWithSpringMVC/showUser'">
+     <button type="button" class="btn btn-secondary col-md-2 " onclick="location.href = '/StudentManagementWithSpringMVC/showUser'">
                 Back
             </button>
     

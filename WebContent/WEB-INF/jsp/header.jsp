@@ -22,14 +22,14 @@
         <div class="container">
             <div class=row>        
                 <div class="col-md-5 ">
-            <a href="/StudentRegisterationWithSpringMVC/showMenu"><h3>Student Registration</h3></a>
+            <a href="/StudentManagementWithSpringMVC/showMenu"><h3>Student Registration</h3></a>
         </div>  
         <div class="col-md-6">
             <p>User: ${sessionScope.user.userId} ${sessionScope.user.userName}</p>
             <p>Current Date : ${sessionScope.date} </p>
         </div>  
         <div class="col-md-1" >
-            <input type="button" class="btn-basic" id="lgnout-button" value="${sessionScope.user==null? 'Login': 'Log Out' }" onclick="location.href='/StudentRegisterationWithSpringMVC/Logout'">
+            <input type="button" class="btn-basic" id="lgnout-button" value="${sessionScope.user==null? 'Login': 'Log Out' }" onclick="location.href='/StudentManagementWithSpringMVC/Logout'">
         </div>        
     </div>
 </div>
@@ -41,11 +41,11 @@
         <button class="dropdown-btn" > Class Management <i class="fa fa-caret-down"></i></button>
         
             <div class="dropdown-container">
-          <a href="/StudentRegisterationWithSpringMVC/showCourseRegister">Course Registration </a>
-          <a href="/StudentRegisterationWithSpringMVC/showStudentRegister">Student Registration </a>
-          <a href="ShowStudentServlet">Student Search </a>
+          <a href="/StudentManagementWithSpringMVC/showCourseRegister">Course Registration </a>
+          <a href="/StudentManagementWithSpringMVC/showStudentRegister">Student Registration </a>
+          <a href="/StudentManagementWithSpringMVC/showStudentAll">Student Search </a>
         </div>
-        <a href="/StudentRegisterationWithSpringMVC/showUser">Users Management</a>
+        <a href="/StudentManagementWithSpringMVC/showUser">Users Management</a>
       </div>
 </body>
 </html>

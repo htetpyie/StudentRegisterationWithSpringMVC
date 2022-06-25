@@ -28,7 +28,7 @@
     <jsp:include page="header.jsp"></jsp:include>
       <div class="main_contents">
     <div id="sub_content">
-    <form:form action="/StudentRegisterationWithSpringMVC/courseRegister" method="post" modelAttribute="courseBean">
+    <form:form action="/StudentManagementWithSpringMVC/courseRegister" method="post" modelAttribute="courseBean">
         <h2 class="col-md-6 offset-md-2 mb-5 mt-4">Course Registration</h2>        
         <div class="row mb-4 ${success.isBlank()? 'd-none': '' }${error.isBlank()? 'd-none' : '' }">
             <div class="col-md-2"></div>	

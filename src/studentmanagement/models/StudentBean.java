@@ -1,5 +1,7 @@
 package studentmanagement.models;
 
+import java.util.ArrayList;
+
 import javax.validation.constraints.NotEmpty;
 
 public class StudentBean {
@@ -15,7 +17,7 @@ public class StudentBean {
 	@NotEmpty
 	private String studentEducation;
 	@NotEmpty
-	private String studentCourse;
+	private ArrayList<String> studentCourse;
 	private String studentPhoto;
 	
 	public StudentBean() {
@@ -69,16 +71,17 @@ public class StudentBean {
 	public void setStudentEducation(String studentEducation) {
 		this.studentEducation = studentEducation;
 	}
-	public String getStudentCourse() {
-		return studentCourse;
-	}
-	public void setStudentCourse(String studentCourse) {
-		this.studentCourse = studentCourse;
-	}
+
 	public String getStudentPhoto() {
 		return studentPhoto;
 	}
 	public void setStudentPhoto(String studentPhoto) {
 		this.studentPhoto = studentPhoto;
+	}
+	public ArrayList<String> getStudentCourse() {
+		return studentCourse;
+	}
+	public void setStudentCourse(ArrayList<String> studentCourse) {
+		this.studentCourse = studentCourse;
 	}
 }

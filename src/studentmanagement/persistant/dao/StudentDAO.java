@@ -105,7 +105,7 @@ public class StudentDAO {
 	}
 
 	public ArrayList<StudentResponseDTO> selectStudentAll() {	
-		ArrayList<StudentResponseDTO> list = new ArrayList();
+		ArrayList<StudentResponseDTO> list = new ArrayList<>();
 		String sql = "select * from student_table ";		
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);		
